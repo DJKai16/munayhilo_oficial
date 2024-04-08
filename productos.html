@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Munay Hilo /productos</title>
+</head>
+<body>
+     
+      <!-- Loader -->
+      <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loading-message">Cargando página...</div>
+    </div>
+  
+    <header>
+        <div class="menu">
+            <img src="img/logofinal.png" alt="">
+            <span id="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></span>
+            <ul class="nav-list">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i>Inicio</a></li>
+                <li><a href="productos.html"><i class="fas fa-shopping-bag"></i>Productos</a></li>
+                <li id="cart-icon"><a href="#"><i class="fas fa-shopping-cart"></i>shopping</a></li>
+
+                <li>
+                    <form id="search-form">
+                        <input type="text" id="search-input" placeholder="Escribir...">
+                        <button type="submit">Buscar</button>
+                    </form>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </header>
+   
+
+     <!-- Agrega el contenido del carrito aquí -->
+     <div id="cart-modal" class="cart-modal">
+        <span class="close-btn" onclick="closeCart()">×</span>
+        <ul id="cart-list" class="cart-list"></ul>
+    </div>
+
+    <div id="cart-summary-modal" class="cart-modal">
+        <span class="close-btn" onclick="closeCartSummary()">×</span>
+        <div id="cart-summary-content"></div>
+    </div>
+
+    <div class="sub-nombre">
+        <h2>Novedades en tendencia</h2>
+    </div>
+    
+<div class="gallery">
+    <div class="product">
+        <img src="img/munay_hilo_an8.jpg" alt="Producto 1">
+        <h3>Juego de Collar y Pulsera</h3>
+        <p>Precio sin tarjeta: <span class="original-price">S/ 50</span></p>
+        <p>Precio con tarjeta: S/ 45</p>
+        <button class="buy-button" onclick="addToCart('Bolso color rojo', 50, 45)">Agregar al carrito</button>
+    </div>
+    <div class="product">
+        <img src="img/munay_hilo_an5.jpg" alt="Producto 2">
+        <h3>Pulseras para Parejas</h3>
+        <p>Precio sin tarjeta: <span class="original-price">S/ 40</span></p>
+        <p>Precio con tarjeta: S/ 35</p>
+        <button class="buy-button" onclick="addToCart('Mochila de niña')">Agregar al carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="img/munay_hilo_an7.jpg" alt="Producto 1">
+        <h3>Pulsera de la Suerte</h3>
+        <p>Precio sin tarjeta: <span class="original-price">S/ 20</span></p>
+        <p>Precio con tarjeta: S/ 15</p>
+        <button class="buy-button" onclick="addToCart('Mochila para niña')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+        <img src="img/munay_hilo_an3.jpg" alt="Producto 2">
+        <h3>Ojito Turco</h3>
+        <p>Precio sin tarjeta: <span class="original-price">S/ 20</span></p>
+        <p>Precio con tarjeta: S/ 15</p>
+        <button class="buy-button" onclick="addToCart('Producto 1')">Agregar al carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="img/munay_hilo2.jpg" alt="Producto 1">
+        <button class="buy-button" onclick="addToCart('Producto 1')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+        <img src="img/munay_hilo_an6.jpg" alt="Producto 2">
+        <h3>Pulsera para Parejas</h3>
+        <p>Precio sin tarjeta: <span class="original-price">S/ 40</span></p>
+        <p>Precio con tarjeta: S/ 35</p>
+        <button class="buy-button" onclick="addToCart('Producto 1')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+        <img src="img/munay_hilo1.jpg" alt="Producto 1">
+        <button class="buy-button" onclick="addToCart('Producto 1')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+        <img src="img/munay_hilo_an4.jpg" alt="Producto 2">
+        <h3>Pulsera Ojito turco</h3>
+        <p>Precio sin tarjeta: <span class="original-price">S/ 20</span></p>
+        <p>Precio con tarjeta: S/ 15</p>
+        <button class="buy-button" onclick="addToCart('Producto 1')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+        <img src="img/munay_hilo.jpg" alt="Producto 1">
+        <button class="buy-button" onclick="addToCart('Producto 1')">Agregar al carrito</button>
+    </div>
+    <div class="product">
+        <img src="img/munay_hilo_an2.jpg" alt="Producto 2">
+        <h3>dijen de corazon</h3>
+        <p>Precio Antes: <span class="original-price">S/ 20</span></p>
+        <p>Precio Oferta: S/ 15</p>
+        <button class="buy-button" onclick="addToCart('Producto 1')">Agregar al carrito</button>
+    </div>
+    
+    <!-- Agrega más productos según sea necesario -->
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2023 Wasi Wanka</p>
+        <p>Contacto: info@WasiWanka.com</p>
+    </div>
+</footer>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

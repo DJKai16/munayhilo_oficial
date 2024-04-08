@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munay Hilo </title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="menu">
+           <img src="img/logofinal.png" alt="">
+            <span id="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></span>
+            <ul class="nav-list">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i>Inicio</a></li>
+                <li><a href="productos.html"><i class="fas fa-shopping-bag"></i>Productos</a></li>
+                <li id="cart-icon"><a href="#"><i class="fas fa-shopping-cart"></i>shopping</a></li>
+             <!-- Temporizador de descarga en el menú -->
+             <li><button class="download-button" onclick="startDownload()"><i class="fa-solid fa-download"></i> Catalago PDF<span class="countdown-text"></span></button></li>
+        
+                <li>
+                    <form id="search-form">
+                        <input type="text" id="search-input" placeholder="Escribir...">
+                        <button type="submit">Buscar</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+  
+
+     <!-- Sección principal con imagen de fondo -->
+     <section id="main-section">
+        <div class="overlay">
+            <p class="product-description">
+                Descubre nuestra exclusiva colección de carteras, mochilas, Pulseras de hilo y más. ¡Estilo y calidad tejidos con pasión!
+            </p>
+        </div>
+    </section>
+
+
+
+
+  <!-- Sección Quiénes Somos -->
+<section id="about-us">
+    <div class="section-content">
+        <h2>Quiénes Somos</h2>
+        <img src="img/munay_hilo_an5.jpg" alt="Imagen Quiénes Somos" class="about-us-image">
+        <p>Somos una tienda dedicada a ofrecer productos únicos y de alta calidad hechos con hilos de la mejor calidad...</p>
+        <!-- Puedes agregar más contenido según sea necesario -->
+    </div>
+</section>
+
+    
+
+    <!-- Contenedor de productos -->
+    <section id="products-container" class="product-grid"></section>
+
+    <div class="gallery">
+        <div class="product">
+            <img src="img/munay_hilo_an13.jpg" alt="Producto 1">
+            <h2>Parejas</h2>
+            <p>Hermosa pulseras para regalar.</p>
+            <div class="link">
+                <a href="productos.html">Ver Mas</a>
+            </div>
+           
+        </div>
+        <div class="product">
+            <img src="img/munay_hilo_an1.jpg" alt="Producto 2">
+            <h2>Pulsera de Corazon</h2>
+            <p>Estilo unico,hermosa pulsera de corazon.</p>
+            <div class="link">
+                <a href="productos.html">Ver Mas</a>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/munay_hilo_an14.jpg" alt="Producto 2">
+            <h2>KING Y QUEEN</h2>
+            <p>Pulsera para parejas. tienen dos dijen de corazon de acero</p>
+            <div class="link">
+                <a href="productos.html">Ver Mas</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="gallery">
+        <div class="product">
+            <img src="img/munay_hilo_an8.jpg" alt="Producto 1">
+            <h2>Collar y pulsera</h2>
+            <p>Hermosa juego de collor y pulsera.</p>
+            <div class="link">
+                <a href="productos.html">Ver Mas</a>
+            </div>
+           
+        </div>
+        <div class="product">
+            <img src="img/munay_hilo_an7.jpg" alt="Producto 2">
+            <h2>Pulsera 7 nudos</h2>
+            <p>Estilo unico,pulsera de la suerte 7 nudos.</p>
+            <div class="link">
+                <a href="productos.html">Ver Mas</a>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/munay_hilo_an12.jpg" alt="Producto 2">
+            <h2>Pulsera Ojo Turco</h2>
+            <p>Hermosa pulsera con dijen de ojo turco, para la ocacion.</p>
+            <div class="link">
+                <a href="productos.html">Ver Mas</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startDownload() {
+            var countdown = 10; // Tiempo en segundos para la descarga
+            var downloadButton = document.querySelector('.download-button');
+            var countdownText = downloadButton.querySelector('.countdown-text');
+            downloadButton.innerText = 'Espere ' + countdown + ' segundos';
+            countdownText.innerText = countdown + ' segundos';
+            
+            var countdownInterval = setInterval(function() {
+                countdown--;
+                downloadButton.innerText = 'Espere ' + countdown + ' segundos';
+                countdownText.innerText = countdown + ' segundos';
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    downloadButton.innerText = 'Descargando...';
+                    // Lógica de descarga del PDF
+                    var pdfUrl = 'catalago/Presentación Catálogo de productos Elegante Dorado.pdf'; // Reemplaza 'ruta_del_archivo.pdf' con la ruta de tu archivo PDF
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', pdfUrl, true);
+                    xhr.responseType = 'blob';
+                    xhr.onload = function() {
+                        var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                        var url = window.URL.createObjectURL(blob);
+                        var a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'Munay_Hilo.pdf'; // Reemplaza 'nombre_del_archivo.pdf' con el nombre que quieras para tu archivo PDF
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                        downloadButton.innerText = 'Descargar PDF';
+                    };
+                    xhr.send();
+                }
+            }, 1000); // Intervalo de 1 segundo
+        }
+    </script>
+  
+    <!-- Paginación -->
+<div class="pagination" id="pagination-container"></div>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Munay Hilo</p>
+        <p>Contacto: info@munayhilo.com</p>
+    </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
